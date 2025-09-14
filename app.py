@@ -25,7 +25,7 @@ def webhook():
     data = request.get_json() or {}
     msg = data.get("message")
     if not msg:
-        return "ok"
+        return {"ok": True}, 200 
     chat_id = msg["chat"]["id"]
     text = msg.get("text", "")
 
@@ -50,3 +50,4 @@ def webhook():
 @app.route("/", methods=["GET"])
 def index():
     return f"OK {datetime.utcnow().isoformat()}Z"
+
